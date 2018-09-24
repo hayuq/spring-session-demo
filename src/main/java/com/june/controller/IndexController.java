@@ -12,7 +12,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class IndexController {
 
     @GetMapping("login")
-    public String login() {
+    public String login(HttpSession session) {
+        if (session.getAttribute("userName") != null) {
+            return "index";
+        }
         return "login";
     }
 
